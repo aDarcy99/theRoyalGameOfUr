@@ -6,21 +6,33 @@ import {
     Link,
     Switch
 } from "react-router-dom";
-
+import {createGlobalStyle} from "styled-components";
+//Components
+import CoreTheme from "./component/core/Theme/CoreTheme.jsx";
 //pages
 import IndexPage from "./pages/IndexPage.jsx";
-import AboutPage from "./pages/AboutPage.jsx";
+
+const GlobalStyle = createGlobalStyle`
+    *{
+        margin: 0;
+        font-family: Arial;
+    }
+    html, body, #page-content{
+        height: 100%;
+    }
+`;
+
 
 function App(){
     return(
-        <BrowserRouter>
-            <Route exact path="/">
-                <IndexPage />
-            </Route>
-            <Route exact path="/about">
-                <AboutPage />
-            </Route>
-        </BrowserRouter>
+        <CoreTheme>
+            <BrowserRouter>
+                <GlobalStyle />
+                <Route exact path="/">
+                    <IndexPage />
+                </Route>
+            </BrowserRouter>
+        </CoreTheme>
     )
 }
 
